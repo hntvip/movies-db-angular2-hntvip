@@ -5,8 +5,6 @@ const routes: Routes = [
   {
     path: 'movies',
     loadChildren: 'app/movies/movies.module#MoviesModule',
-    // canActivate
-    // canLoad
   }
 ];
 
