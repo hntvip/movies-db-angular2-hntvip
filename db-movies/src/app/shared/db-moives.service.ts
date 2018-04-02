@@ -14,9 +14,9 @@ export class DbMoivesService {
   constructor(private http: HttpClient) { }
   
   //https://api.themoviedb.org/3/movie/popular?api_key=39dfc63bddc9461c20f39a37a3044237&language=en-US&page=1
-  getPopular() : Observable<Movie> {
+  getPopular() : Observable<Movie[]> {
     let url = `${this.baseUrl}/${this.type}?api_key=${this.apiKey}&language=${this.language}&page=${this.page}`;
-    return this.http.get<Movie>(url);
+    return this.http.get<Movie[]>(url);
   }
 
 }

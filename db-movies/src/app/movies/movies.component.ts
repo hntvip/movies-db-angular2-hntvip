@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DbMoivesService } from '../shared/db-moives.service';
 import { Movie } from './movie';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -16,8 +17,8 @@ export class MoviesComponent implements OnInit {
     this.getMoives();
   }
   
-  getMoives(){
-    this.service.getPopular().subscribe(data => { this.movies = data['results']});
+  getMoives() {
+    this.service.getPopular().subscribe(data => this.movies = data['results']);
   } 
   
   
