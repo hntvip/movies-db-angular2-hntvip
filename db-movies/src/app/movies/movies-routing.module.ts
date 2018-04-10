@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MoviesComponent } from './movies.component';
 const routes: Routes = [
   { path: '', component: MoviesComponent},
-  { path: 'top-rated', component: MoviesComponent},
-  { path: 'upComming', component: MoviesComponent},
-  { path: 'now-playing', component: MoviesComponent},
+  { path: ':category', component: MoviesComponent}
 ];
 
 @NgModule({

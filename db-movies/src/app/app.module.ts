@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { DbMoivesService } from './shared/db-moives.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; 
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ThemeModule
+    ThemeModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
