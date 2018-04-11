@@ -16,44 +16,22 @@ export class DbMoivesService {
   constructor(private http: HttpClient) { }
   
   //https://api.themoviedb.org/3/movie/popular?api_key=39dfc63bddc9461c20f39a37a3044237&language=en-US&page=1
-  // we have 4 type of movies : popular, top rated, upComming, now playing
+  // we have 4 type of movies : popular, top rated, upComing, now playing
   
-  getMovies(type: string) : Observable<Movie[]> {
+  getMovies(type: string, page?: number) : Observable<Movie[]> {
     if(type == "popular"){
-     return this.getPopular();
+      let url = this.getUrl("popular", page);
+      return this.http.get<Movie[]>(url);
     }else if(type == "top_rated"){
-      return this.getTopRated();
+      let url = this.getUrl("top_rated", page);
+      return this.http.get<Movie[]>(url);
     }else if(type == "upcoming"){
-      return this.getUpComming();
+      let url = this.getUrl("upcoming", page);
+      return this.http.get<Movie[]>(url);
     }else {
-      // now_playing
-      return this.getNowPlaying();
+      let url = this.getUrl("now_playing", page);
+      return this.http.get<Movie[]>(url);
     }
-  }
-
-  private getPopular() : Observable<Movie[]> {
-    let url = this.getUrl("popular");
-    return this.http.get<Movie[]>(url);
-  }
-
-  private getTopRated() : Observable<Movie[]> {
-    let url = this.getUrl("top_rated");
-    return this.http.get<Movie[]>(url);
-  }
-
-  private getUpComming() : Observable<Movie[]> {
-    let url = this.getUrl("upcoming");
-    return this.http.get<Movie[]>(url);
-  }
-
-  private getNowPlaying() : Observable<Movie[]> {
-    let url = this.getUrl("now_playing");
-    return this.http.get<Movie[]>(url);
-  }
-
-  private getUrl(type: string) : string{
-    let privateURL = `${this.baseUrl}/${this.kind}/${type}?api_key=${this.apiKey}&language=${this.language}&page=${this.page}`;
-    return privateURL;
   }
 
   getGenres(): Observable<Genres[]>{
@@ -67,5 +45,11 @@ export class DbMoivesService {
     return this.http.get<Movie>(url);
   }
 
+  private getUrl(type: string, pageNumber?: number) : string{
+    let page = pageNumber || this.page; 
+    let privateURL = `${this.baseUrl}/${this.kind}/${type}?api_key=${this.apiKey}&language=${this.language}&page=${page}`;
+
+    return privateURL;
+  }
   
 }

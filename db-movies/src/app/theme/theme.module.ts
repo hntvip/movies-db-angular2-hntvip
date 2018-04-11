@@ -4,14 +4,16 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DbMoivesService } from '../shared/db-moives.service';
+import { PaginationBarComponent } from './pagination-bar/pagination-bar.component';
+import { PaginationService } from './pagination-bar/pagination.service';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     NgbModule
   ],
-  declarations: [NavigationBarComponent],
-  exports: [ NavigationBarComponent ],
-  providers: [DbMoivesService]
+  declarations: [NavigationBarComponent, PaginationBarComponent],
+  exports: [ NavigationBarComponent, PaginationBarComponent ],
+  providers: [DbMoivesService, PaginationService]
 })
 export class ThemeModule { }

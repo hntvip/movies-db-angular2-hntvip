@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 import { Subscription } from 'rxjs/Subscription';
+import { PaginationService } from '../theme/pagination-bar/pagination.service';
 
 @Component({
   selector: 'app-movies',
@@ -12,28 +13,41 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  urlActivated : any;
+  pages: number;
   movies : Movie[];
+
   private sub: Subscription;
-  constructor(private service: DbMoivesService, private route : ActivatedRoute) {  
+
+  constructor(private service: DbMoivesService, private route : ActivatedRoute, private paService: PaginationService) {  
   }
   
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      if(params['category'] == 'popular'){
+      let category = params['category'];
+      
+      if(category == 'popular'){
         this.getMoives('popular');
-      } else if(params['category'] == 'upcoming'){
+      } else if(category == 'upcoming'){
         this.getMoives('upcoming');
-      } else if(params['category'] == 'now_playing'){
+      } else if(category == 'now_playing'){
         this.getMoives('now_playing');
       } else {
         this.getMoives('top_rated');
       }
+
+      // listening page change
+      this.paService.changePage.subscribe( page => {
+        this.getMoives(category, page);
+      })
    });
+   
   }
   
-  getMoives(type : string) {
-    this.service.getMovies(type).subscribe(data => this.movies = data['results']);
+  getMoives(type : string, page?: number) {
+    this.service.getMovies(type, page).subscribe(data => {
+      this.movies = data['results'];
+      this.paService.getTotalItems(data['total_results']);
+    });
   } 
   
   
