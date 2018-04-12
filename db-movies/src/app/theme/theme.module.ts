@@ -1,3 +1,4 @@
+import { MovieDataService } from './../shared/movie-data.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -14,6 +15,6 @@ import { PaginationService } from './pagination-bar/pagination.service';
   ],
   declarations: [NavigationBarComponent, PaginationBarComponent],
   exports: [ NavigationBarComponent, PaginationBarComponent ],
-  providers: [DbMoivesService, PaginationService]
+  providers: [DbMoivesService, PaginationService, MovieDataService]
 })
 export class ThemeModule { }

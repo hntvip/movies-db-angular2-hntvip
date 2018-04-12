@@ -1,3 +1,4 @@
+import { MovieDataService } from './../shared/movie-data.service';
 import { Component, OnInit } from '@angular/core';
 import { DbMoivesService } from '../shared/db-moives.service';
 import { Movie } from './movie';
@@ -18,7 +19,11 @@ export class MoviesComponent implements OnInit {
 
   private sub: Subscription;
 
-  constructor(private service: DbMoivesService, private route : ActivatedRoute, private paService: PaginationService) {  
+  constructor(
+    private service: DbMoivesService, 
+    private route : ActivatedRoute, 
+    private paService: PaginationService,
+    private movieDataService: MovieDataService) {  
   }
   
   ngOnInit() {
@@ -38,17 +43,22 @@ export class MoviesComponent implements OnInit {
       // listening page change
       this.paService.changePage.subscribe( page => {
         this.getMoives(category, page);
-      })
-   });
+      });
+      // listenning search movie
+      this.movieDataService.changeData.subscribe( data =>{
+        this.movies = data["results"];
+      });
+
+    });
+
    
   }
   
-  getMoives(type : string, page?: number) {
+  getMoives(type : string,  page?: number) {
     this.service.getMovies(type, page).subscribe(data => {
       this.movies = data['results'];
       this.paService.getTotalItems(data['total_results']);
     });
   } 
-  
   
 }

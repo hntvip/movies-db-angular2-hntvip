@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Genres } from '../movies/genres';
+import { ListResult } from '../movies/list-result.model';
 @Injectable()
 export class DbMoivesService {
   
@@ -45,6 +46,13 @@ export class DbMoivesService {
     return this.http.get<Movie>(url);
   }
 
+  search(keyword: string, page?: number): Observable<ListResult<Movie>>{
+    // we have many options : include_adult, region, year, primary_release_year
+    let _page = page || 1;
+    let url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&language=${this.language}&page=${_page}&query=${keyword}`;
+    return this.http.get<ListResult<Movie>>(url);
+  }
+
   private getUrl(type: string, pageNumber?: number) : string{
     let page = pageNumber || this.page; 
     let privateURL = `${this.baseUrl}/${this.kind}/${type}?api_key=${this.apiKey}&language=${this.language}&page=${page}`;
@@ -52,4 +60,5 @@ export class DbMoivesService {
     return privateURL;
   }
   
+
 }
