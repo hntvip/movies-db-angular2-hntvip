@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'movies',
     loadChildren: 'app/movies/movies.module#MoviesModule',
+  },
+  { path: '', 
+    redirectTo: '/movies/popular', 
+    pathMatch: 'full' 
   }
 ];
 
