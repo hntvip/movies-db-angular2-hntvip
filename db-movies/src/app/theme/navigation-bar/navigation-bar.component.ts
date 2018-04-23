@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { Genres } from '../../movies/genres';
 import { ActivatedRoute } from '@angular/router';
 import { PaginationService } from '../pagination-bar/pagination.service';
-import { MoviesComponent } from '../../movies/movies.component';
 
 @Component({
   selector: 'app-navigation-bar',
