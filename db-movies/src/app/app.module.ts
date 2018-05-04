@@ -1,3 +1,4 @@
+import { NavigationBarComponent } from './theme/navigation-bar/navigation-bar.component';
 import { ThemeModule } from './theme/theme.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

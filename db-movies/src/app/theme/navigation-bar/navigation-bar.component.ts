@@ -26,12 +26,10 @@ export class NavigationBarComponent implements OnInit {
   }
 
   searchMovie(keyword: string, page?: number){
-    // this.moviesService.search(keyword, page).subscribe(data => {
-    //   //listening data from search
-    //   this.movieDataService.update(data);
-    // }); 
-    let object = {keyword: keyword, page: page};
-    this.movieDataService.changeData(object)
+    this.moviesService.search(keyword, page).subscribe(data => {
+      //listening data from search
+      this.movieDataService.update(data);
+    });
   }
 
   
