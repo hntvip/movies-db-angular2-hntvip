@@ -1,3 +1,4 @@
+import { MovieDataService } from './../shared/movie-data.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,6 +18,6 @@ import { AppHightLightDirective } from '../shared/directives/app-hight-light.dir
     ThemeModule
   ],
   declarations: [MoviesComponent, MovieDetailComponent, AppHightLightDirective],
-  providers:[DbMoivesService, PaginationService]
+  providers:[DbMoivesService, PaginationService, MovieDataService]
 })
 export class MoviesModule { }

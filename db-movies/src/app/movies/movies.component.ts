@@ -44,14 +44,14 @@ export class MoviesComponent implements OnInit {
       this.paService.changePage.subscribe( page => {
         this.getMoives(category, page);
       });
-      // listenning search movie
-      this.movieDataService.changeData.subscribe( data =>{
-        this.movies = data["results"];
-      });
-
+      
     });
 
-   
+    this.movieDataService.currentMessage.subscribe(data =>{
+      this.service.search(data["keyword"],data["page"]).subscribe(data =>{
+        this.movies = data["results"];
+      })
+    })
   }
   
   getMoives(type : string,  page?: number) {
