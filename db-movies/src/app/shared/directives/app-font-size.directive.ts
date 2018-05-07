@@ -14,6 +14,7 @@ export class AppFontSizeDirective {
   @HostListener('mouseleave') mouseLeave(e) {
     this.changeFontSize(this.defaultSize);
   }
+  
   private changeFontSize(size: string){
     this.element.nativeElement.style.fontSize = size;
   }

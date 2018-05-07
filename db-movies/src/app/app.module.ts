@@ -10,7 +10,8 @@ import { DbMoivesService } from './shared/db-moives.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { AppFontSizeDirective } from './shared/directives/app-font-size.directive'; 
+import { AppFontSizeDirective } from './shared/directives/app-font-size.directive';
+import { CardBorderDirective } from './shared/directives/card-border.directive'; 
 
 @NgModule({
   declarations: [
