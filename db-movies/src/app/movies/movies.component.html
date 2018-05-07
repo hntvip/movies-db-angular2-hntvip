@@ -6,7 +6,7 @@
           <img class="card-img-top" *ngIf="movie.poster_path" src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" alt="Card image cap">
           <img class="card-img-top" *ngIf="!movie.poster_path" width="185px" height="385px" src="assets/images/no-image-available2.jpg" alt="No Image">
           <div class="card-body">
-            <h5 class="card-title" >{{movie.title}}</h5>
+            <h5 class="card-title" appAppFontSize >{{movie.title}}</h5>
             <p class="card-text">{{movie.overview}}</p>
             <a [routerLink]="['detail',movie.id]" class="btn btn-primary" appHightLight>Go to detail</a>
           </div>

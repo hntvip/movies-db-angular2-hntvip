@@ -1,3 +1,31 @@
-<p>
-  movie-detail works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card" style="margin-bottom: 20px">
+                <img class="card-img-top" src="https://image.tmdb.org/t/p/w185/{{movie?.poster_path}}" alt="{{movie?.title}}">
+                <div class="card-block">
+                    <h4 class="card-title">{{movie?.title}}</h4>
+                    <p class="card-text">{{movie?.overview}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Release date: {{movie?.release_date}}</li>
+                    <li class="list-group-item">Vote Average: {{movie?.vote_average}} </li>
+                    <li class="list-group-item">Vote Count : {{movie?.vote_count}}</li>
+                </ul>
+                <div class="card-block" style="padding:10px">
+                    <a href="{{movie?.homepage}}" target="_blank" class="card-link text-center" >Go to the official website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6" *ngFor="let review of reviews">
+            <ol appAppFontSize>
+                <li class="item"> {{review?.author}} </li>
+                <li> {{review?.content}} </li>
+                <li> {{review?.id}} </li>
+                <li> {{review?.url}} </li>
+            </ol>
+        </div>
+    </div>
+</div>

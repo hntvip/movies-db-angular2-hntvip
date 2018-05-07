@@ -1,35 +1,37 @@
-export interface Movie {
-    "vote_count": string,
-    "id": number,
-    "video": boolean,
-    "vote_average": number,
-    "title": string,
-    "popularity": number,
-    "poster_path": string,
-    "original_language": string,
-    "original_title": string,
-    "genre_ids": Array<number>,
-    "backdrop_path": string,
-    "adult": boolean,
-    "overview": string,
-    "release_date": string
-}
-// example 
+import { Genres } from "./genres";
 
-// "vote_count": 768,
-// "id": 338970,
-// "video": false,
-// "vote_average": 6.2,
-// "title": "Tomb Raider",
-// "popularity": 202.323188,
-// "poster_path": "/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg",
-// "original_language": "en",
-// "original_title": "Tomb Raider",
-// "genre_ids": [
-//   28,
-//   12
-// ],
-// "backdrop_path": "/yVlaVnGRwJMxB3txxwA24XurSNp.jpg",
-// "adult": false,
-// "overview": "Lara Croft, the fiercely independent daught.",
-// "release_date": "2018-03-08"
+export interface Movie {
+    id: number,
+    adult?: boolean,
+    backdrop_path?: string,
+    belongs_to_collection?: Object,
+    budget?: number,
+    genres?: Array<Genres>,
+    homepage?: string,
+    imdb_id?: string,
+    minLength?: number,
+    maxLength?: number,
+    pattern?: number,
+    original_language?: string,
+    original_title?: string,
+    overview?: string,
+    popularity?: number,
+    poster_path?: string,
+    production_companies?: Array<Object>,
+    logo_path?: string,
+    origin_country?: string,
+    production_countries?: Array<Object>,
+    release_date?: string
+    format?: Date,
+    revenue?: number,
+    runtime?: number,
+    spoken_languages?: Array<Object>,
+    iso_639_1?: string,
+    name?: string,
+    status?: string,
+    tagline?: string,
+    title?: string,
+    video?: boolean,
+    vote_average?: number,
+    vote_count?: number
+}

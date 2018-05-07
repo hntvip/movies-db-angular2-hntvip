@@ -53,6 +53,12 @@ export class DbMoivesService {
     return this.http.get<ListResult<Movie>>(url);
   }
 
+  getReviews(id : number, page?: number) : Observable<any> {
+    let _page = page || 1;
+     let url= `${this.baseUrl}/${this.kind}/${id}/reviews?api_key=${this.apiKey}&language=${this.language}&page=${_page}`;
+     return this.http.get(url);
+  }
+
   private getUrl(type: string, pageNumber?: number) : string{
     let page = pageNumber || this.page; 
     let privateURL = `${this.baseUrl}/${this.kind}/${type}?api_key=${this.apiKey}&language=${this.language}&page=${page}`;

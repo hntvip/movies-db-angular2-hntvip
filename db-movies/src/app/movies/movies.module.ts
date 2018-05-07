@@ -9,6 +9,7 @@ import { PaginationService } from '../theme/pagination-bar/pagination.service';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap/pagination/pagination';
 import { ThemeModule } from '../theme/theme.module';
 import { AppHightLightDirective } from '../shared/directives/app-hight-light.directive';
+import { AppFontSizeDirective } from '../shared/directives/app-font-size.directive';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { AppHightLightDirective } from '../shared/directives/app-hight-light.dir
     MoviesRoutingModule,
     ThemeModule
   ],
-  declarations: [MoviesComponent, MovieDetailComponent, AppHightLightDirective],
+  declarations: [MoviesComponent, MovieDetailComponent, AppHightLightDirective, AppFontSizeDirective],
   providers:[DbMoivesService, PaginationService]
 })
 export class MoviesModule { }
