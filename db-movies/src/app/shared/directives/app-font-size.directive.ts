@@ -4,7 +4,7 @@ import { Input } from '@angular/core/src/metadata/directives';
   selector: '[appAppFontSize]'
 })
 export class AppFontSizeDirective {
-  defaultSize: "16px";
+  defaultSize = "16px";
   constructor(private element : ElementRef) { }
   
   @HostListener('mouseenter') mouseEnter(e) {
@@ -14,7 +14,7 @@ export class AppFontSizeDirective {
   @HostListener('mouseleave') mouseLeave(e) {
     this.changeFontSize(this.defaultSize);
   }
-  
+
   private changeFontSize(size: string){
     this.element.nativeElement.style.fontSize = size;
   }
